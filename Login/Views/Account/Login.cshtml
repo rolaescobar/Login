@@ -1,0 +1,32 @@
+﻿
+@model LoginViewModel;
+
+@{
+
+    ViewData["Title"] = "Login";
+
+}
+<div class="text-center">
+    <h2>Iniciar Sesión</h2>
+
+    <form asp-action="Login" method="post"  >
+        <div>
+            <label asp-for="Username">Usuario</label>
+            <input asp-for="Username" class="form-control" />
+
+        </div>
+
+        <div>
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" class="form-control" type="password" />
+
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+
+        </div>
+
+
+    </form>
+
+</div>
