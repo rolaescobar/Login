@@ -11,6 +11,7 @@ namespace Login.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            ViewBag.HideMenu = true;
             return View();
         }
 
@@ -18,34 +19,22 @@ namespace Login.Controllers
 
 
         [HttpPost]
-        public IActionResult Login (LoginViewModel model)
+        public IActionResult Login(LoginViewModel model)
         {
-
-
             if (ModelState.IsValid)
             {
-
-                if(model.Username == "admin")
+                if (model.Username == "admin" && model.Password == "1234")
                 {
-                    //username: admin
-                    //password: 1234
-
-                    ViewBag.Mensaje = "Login exitoso";
                     return RedirectToAction("Index", "Home");
-
                 }
                 else
                 {
                     ModelState.AddModelError("", "Usuario o contraseña incorrectos");
                 }
-
-
-                return View(model);
             }
 
+            ViewBag.HideMenu = true; // importante también en el POST fallido
             return View(model);
-  
-          
         }
 
     }
