@@ -1,6 +1,53 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model Login.Models.PersonaViewModel
 
-<p>Use this page to detail your site's privacy policy.</p>
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="d-flex  justify-content-center" style="min-height:100vh; background:white;">
+    <div class="card shadow-lg border-0" style="max-width: 900px; width:100%; border-radius:1rem;">
+        
+        <div class="card-body p-4">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger py-2">
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger mb-0" })
+                </div>
+            }
+
+            <form asp-action="Login" method="post" novalidate>
+                @Html.AntiForgeryToken()
+                <i class="bi bi-0-circle-fill"></i>
+                <div class="mb-3">
+                
+                    <input asp-for="IdPersona" class="form-control" placeholder="Id de la persona" />
+                
+                </div>
+                <div class="mb-3">
+
+                    <input asp-for="Nombre" class="form-control" placeholder="Nombre" />
+
+                </div>
+                <div class="mb-3">
+
+                    <input asp-for="Edad" class="form-control" placeholder="Edad" />
+
+                </div>
+                <div class="mb-3">
+
+                    <input asp-for="Correo" class="form-control" placeholder="Correo" />
+
+                </div>
+
+            
+    
+
+                <button type="submit" class="btn btn-primary w-100">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
